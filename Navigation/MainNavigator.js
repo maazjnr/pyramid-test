@@ -67,7 +67,7 @@ const MainNavigator = () => {
           
           tabBarIcon: ({focused}) => (
             <Ionicons name="pie-chart-outline" size={24} color="#000"
-            borderBottomWidth={focused ? 2 : 4} />
+             />
           )
         }}
         name="Details"

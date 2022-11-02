@@ -1,12 +1,20 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView } from 'react-native'
+import Header from '../Components/Header'
+import Card from '../Components/Card'
+import Categories from '../Components/Categories'
 import React from 'react'
+import Balance from '../Components/Balance'
 
-const Home = () => {
+const AddProduct = () => {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <ScrollView showsHorizontalScrollIndicator={false} style={{backgroundColor: "#fff",
+    padding: 10}}>
+      <Header/>
+      <Card />
+      <Categories />
+      <Balance />
+    </ScrollView>
   )
 }
 
-export default Home
+export default AddProduct

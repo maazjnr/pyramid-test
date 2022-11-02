@@ -1,68 +1,76 @@
+import { useState } from "react";
 import {
   View,
   Text,
   StyleSheet,
   Image,
-  StatusBar,
   Pressable,
   TouchableHighlight,
 } from "react-native";
 
+const days = [
+  {
+    id: 1,
+    title: "1H",
+  },
+  {
+    id: 2,
+    title: "1D",
+  },
+
+  {
+    id: 3,
+    title: "1W",
+  },
+
+  {
+    id: 4,
+    title: "1M",
+  },
+
+  {
+    id: 5,
+    title: "1Y",
+  },
+
+  {
+    id: 6,
+    title: "All",
+  },
+];
+
 const Card = () => {
+
+  const [isActive, setIsActive] = useState(undefined)
 
   return (
     <View style={styles.container}>
-      <StatusBar />
-      <Text style={{ fontSize: 15, color: "gray" }}>Portfolio balance</Text>
-      <Text style={{ fontSize: 30, fontWeight: "600" }}>$38,552.62</Text>
-      <Text style={{ fontSize: 15, color: "#48c118" }}>+1,439.58(3.88%)</Text>
-      <Image style={styles.trade} source={require("../assets/trade.png")} />
+      <View style={{ marginTop: 15 }}>
+        <Text style={{ fontSize: 15, color: "gray" }}>Portfolio balance</Text>
+        <Text style={{ fontSize: 30, fontWeight: "600" }}>$38,552.62</Text>
+        <Text style={{ fontSize: 15, color: "#48c118" }}>+1,439.58(3.88%)</Text>
+        <Image style={styles.trade} source={require("../assets/trade.png")} />
+      </View>
 
-{/* Days Categories */}
+      {/* Days Categories */}
 
       <View style={styles.day}>
-        <Pressable
-          children={({ pressed }) => (
-            <Text style={{ color: pressed ? "#48c118" : "gray" }}>1H</Text>
-          )}
-        />
-        <Pressable
-          children={({ pressed }) => (
-            <Text style={{ color: pressed ? "#48c118" : "gray" }}>1D</Text>
-          )}
-        />
-        <Pressable
-          children={({ pressed }) => (
-            <Text style={{ color: pressed ? "#48c118" : "gray" }}>1W</Text>
-          )}
-        />
-        <Pressable
-          children={({ pressed }) => (
-            <Text style={{ color: pressed ? "#48c118" : "gray" }}>1M</Text>
-          )}
-        />
-        <Pressable
-          children={({ pressed }) => (
-            <Text style={{ color: pressed ? "#48c118" : "gray" }}>1Y</Text>
-          )}
-        />
-        <Pressable
-          children={({ pressed }) => (
-            <Text style={{ color: pressed ? "#48c118" : "gray" }}>All</Text>
-          )}
-        />
+        {days.map((day) => (
+         <Text onPress={() => setIsActive(day)} style={{
+          color: isActive?.id === day.id ? "#48c118" : "gray"
+         }}>
+          {day.title}
+         </Text>
+        ))}
       </View>
 
       {/* Different types of Categories */}
-
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
+  container: {},
 
   trade: {
     width: "100%",
